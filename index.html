@@ -114,11 +114,6 @@
                 <a class="nav-link" href="#dataset"><img src="static/img/icons/dataset.png" title="dataset"></a>
             </div>
             <hr style="display: block; margin: auto;">
-            <!-- evaluation -->
-            <div id="nav-bar-evaluation">
-                <a class="nav-link" href="#evaluation"><img src="static/img/icons/evaluation.png" title="evaluation"></a>
-            </div>
-            <hr style="display: block; margin: auto;">
             <!-- video -->
             <div class="video-color">
                 <a class="nav-link" href="#video">
@@ -169,6 +164,11 @@
             <!-- LLM exam -->
             <div id="nav-bar-system">
                 <a class="nav-link" href="#LLM-test"><img src="static/img/icons/QA.png" title="QA"></a>
+            </div>
+            <hr style="display: block; margin: auto;">
+            <!-- evaluation -->
+            <div id="nav-bar-evaluation">
+                <a class="nav-link" href="#evaluation"><img src="static/img/icons/evaluation.png" title="evaluation"></a>
             </div>
             <hr style="display: block; margin: auto;">
             <!-- conclusion -->
@@ -275,85 +275,6 @@
             </ul>
             
         </div>
-
-        <!-- Evaluation -->
-        <div id="evaluation" style="position: relative; margin-top: 20px; margin-bottom: 40px;">
-            <h2 class="text" style="margin-top:0px; margin-bottom:10px"><img src="static/img/icons/evaluation.png" width="50px"> Evaluation</h2>
-            <p class="text">
-                <strong>Model Bias. </strong>The heatmap of the Normalized Bias Index calculated based on recall rates, as shown
-                in <i>Figure.2 (a)</i>, is utilized for analyzing model biases. The results indicate that most models exhibit
-                significant biases in synthetic data detection tasks, with a tendency to incorrectly categorize data as
-                either real or synthetic. For instance, <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o tends to classify textual data as real, whereas it is biased towards judging 
-                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span>
-                data as AI-generated. Despite diverse questioning techniques implemented
-                to minimize cueing effects, a pronounced bias is still evident across most models. <br>
-
-                <strong>Lack of expert domain knowledge. </strong>In <i>Figure.2 (b)</i>, we present the varying performance of GPT-4o across different 
-                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span>
-                subcategories. The experimental results clearly indicate that GPT exhibits
-                strong recognition abilities on common image types such as <img style="height: 35px;" src="static/img/icons/object.png">objects and <img style="height: 35px;" src="static/img/icons/scenery.png">landscapes, even surpassing
-                human users. However, <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o’s performance significantly deteriorates in specialized fields such
-                as <img style="height: 35px;" src="static/img/icons/satellite.png">satellite and <img style="height: 35px;" src="static/img/icons/medical.png">medical imaging, and in less-trained image types like <img style="height: 35px;" src="static/img/icons/document.png">documents. This suggests that
-                current LMMs still lack certain expert domain knowledge. <br>
-
-                <strong>Unbalanced multimodal capabilities. </strong>In <i>Figure.2 (c)</i>, we compare the performance of various
-                LMMs across different modalities. Results indicate that current models excel in frequently trained
-                modalities such as 
-                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span>
-                and 
-                <span style="color:rgb(166, 72, 255); font-weight: bold;">text</span>
-                , even surpassing human performance in some tests. However,
-                their performance declines significantly on 
-                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span>
-                 and 
-                 <span style="color:rgb(255, 58, 58); font-weight: bold;">audio</span>
-                  tasks, with most open-source models lacking corresponding capabilities. For future AGI to develop into a versatile assistant, it needs to
-                possess more balanced multimodal abilities. <br>
-                
-                <div id="main-image">
-                    <img src="static/img/lidar-map.png" alt="" style="z-index: 8000" data-zoomable>
-                    <figcaption style="text-align: center">Figure. 2 The multimodal large model capability assessment analysis results</figcaption>
-                </div>
-            </p>
-            <p class="text">
-                <strong>Model Performance across Different levels. </strong>Based on human user performance, we categorized
-                the difficulty levels of the questions, as shown in <i>Table.2 (b)</i>, which presents the performance of selected
-                models across different difficulty levels. As the difficulty increases, the performance of LMMs
-                gradually declines, consistent with human user performance. Under challenging conditions, <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o’s accuracy drops to only <strong>44.4%</strong>, which is lower than that achieved by random selection. This
-                indicates that LMMs have certain limitations in handling complex synthetic data detection tasks. <br>
-
-                <strong>Prompting Strategies improve LMMs evaluation. </strong>In <i>Table.2 (b)</i>, we demonstrate the effects of different prompting strategies in LOKI’s 
-                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span> and 
-                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span>
-                judgement tasks, where CoT refers to the Chain of Thought prompting and ICL
-                refers to the few-shot prompting. During inference, models
-                are prompted with two randomly selected examples by different strategies. In CoT prompting, we
-                manually craft ”thought chains” with our human annotations to elicit reasoning steps out of LMMs,
-                while in ICL prompting, we simply prepend examples with answers to our questions. Both strategies
-                generally enhance the performance of LMMs, such as <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o and <img style="height: 25px;" src="static/img/icons/Qwen.png">Qwen2-VL, with <strong>10%</strong> performance gains. However, LLaVA-OV-7B experienced significant performance drop when prompted
-                with CoT examples. We conjecture that this degradation may result from a decline in its ability to
-                understand long contexts after fine-tuning.
-                <div id="main-image">
-                    <img src="static/img/Table4&Table5.jpg" alt="" style="z-index: 8000; margin-left: -20%;" data-zoomable>
-                    <figcaption style="text-align: center">Table.2 (a) Result decomposition across questions difficulty levels. <br>
-                        Table.2 (b) LMMs’ performances under different prompting strategies for judgement tasks.
-                    </figcaption>
-                </div>
-            </p>
-            <p class="text">
-                <div id="main-image">
-                    <img src="static/img/Models_testResult.jpg" alt="" style="z-index: 8000" data-zoomable>
-                    <!-- <figcaption style="text-align: center">Testing Results of Different Models on LOKI</figcaption> -->
-                    <br>
-                    <img src="static/img/Models_testResult_Text&Audio.jpg" alt="" style="z-index: 8000" data-zoomable>
-                    <!-- <figcaption style="text-align: center">Evaluation Results for Text and Audio Abilities</figcaption> -->
-                    <!-- <br>
-                    <img src="static/img/lidar-map.png" alt="" style="z-index: 8000" data-zoomable>
-                    <figcaption style="text-align: center"></figcaption> -->
-                </div>
-            </p>
-        </div>
-
 
         <!-- 1. video -->
         <div id="video">
@@ -1369,7 +1290,43 @@
             
         </div>
 
-
+        <!-- Evaluation -->
+        <div id="evaluation" style="position: relative; margin-top: 20px; margin-bottom: 40px;">
+            <h2 class="text" style="margin-top:0px; margin-bottom:10px"><img src="static/img/icons/evaluation.png" width="50px"> Evaluation</h2>
+            <div id="main-image">
+                <img src="static/img/lidar-map.png" alt="" style="z-index: 8000" data-zoomable>
+                <figcaption style="text-align: center">Figure. 2 The multimodal large model capability assessment analysis results</figcaption>
+            </div>
+            <br>
+            <div id="slider-img-table" class="slider-img-container">
+                <div class="my-slides">
+                    <img data-zoomable src="static/img/Models_testResult.jpg">
+                    <figcaption id="caption" style="margin-bottom: 10px; text-align: center">Table.2 Multimodal evaluation of LMMs</figcaption>
+                </div>
+                <div class="my-slides">
+                    <img data-zoomable src="static/img/Models_testResult_Text&Audio.jpg" >
+                    <figcaption id="caption" style="margin-bottom: 10px; text-align: center">Table.3 Left: Text evaluaion of LLMs ; <br> Right: Audio evaluation of Audio
+                        LMMs</figcaption>
+                </div>
+                <div class="my-slides">
+                    <img data-zoomable src="static/img/Table3_diffModel-Abnormal.jpg" >
+                    <figcaption id="caption" style="margin-bottom: 10px; text-align: center">Table.4 Results of different models on the LOKI for Abormal Details Selection and Abnormal
+                    explanation questions</figcaption>
+                </div>
+                <div class="my-slides">
+                    <img data-zoomable src="static/img/Table4&Table5.jpg" >
+                    <figcaption id="caption" style="margin-bottom: 10px; text-align: center">Table.5 Left: Result decomposition across questions difficulty levels <br>
+                        Right:  LMMs’ performances under different prompting strategies for judgement tasks
+                    </figcaption>
+                </div>
+    
+                <a class="prev" onclick="plusSlides('slider-img-table', -1)">❮</a>
+                <a class="next" onclick="plusSlides('slider-img-table', 1)">❯</a>
+                
+                <figcaption id="caption" style="margin-bottom: 10px; text-align: center"></figcaption>
+        
+            </div>
+        </div>
 
 
         <!-- Conclusion -->
@@ -1418,6 +1375,8 @@
             showSlides("slider-text-paper", slideIndex);
             showSlides("slider-text-news", slideIndex);
             showSlides("slider-text-essay", slideIndex);
+            // slider table
+            showSlides("slider-img-table", slideIndex);
             // auto play slider
             setInterval(function() {
             plusSlides('slider-img-3D', 1);

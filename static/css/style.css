@@ -746,6 +746,12 @@ img {
   opacity: 1;
 }
 
+#slider-img-table .my-slides img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+}
 /* Add a pointer when hovering over the thumbnail images */
 .cursor {
   cursor: pointer;
