@@ -114,6 +114,11 @@
                 <a class="nav-link" href="#dataset"><img src="static/img/icons/dataset.png" title="dataset"></a>
             </div>
             <hr style="display: block; margin: auto;">
+            <!-- evaluation -->
+            <div id="nav-bar-evaluation">
+                <a class="nav-link" href="#evaluation"><img src="static/img/icons/evaluation.png" title="evaluation"></a>
+            </div>
+            <hr style="display: block; margin: auto;">
             <!-- video -->
             <div class="video-color">
                 <a class="nav-link" href="#video">
@@ -159,11 +164,6 @@
                 <a class="nav-link" href="#text-case">
                     <img src="static/img/icons/text.png" title="text data">
                 </a>
-            </div>
-            <hr style="display: block; margin: auto;">
-            <!-- evaluation -->
-            <div id="nav-bar-evaluation">
-                <a class="nav-link" href="#evaluation"><img src="static/img/icons/evaluation.png" title="evaluation"></a>
             </div>
             <hr style="display: block; margin: auto;">
             <!-- LLM exam -->
@@ -224,18 +224,21 @@
             <p class="text">
                 On the LOKI benchmark, we evaluated <strong>22</strong> open-source LMMs, <strong>6</strong> advanced proprietary LMMs,
                 and several expert synthetic detection models. Our key findings are summarized as follows: <br> <br>
-                <strong>1. </strong>For synthetic data detection tasks, LMMs represent a promising tool, exhibiting moderate deepfake detection capabilities along with some level of interpretability and reasoning ability. <br>
-                <strong>2. </strong> LOKI presents significant challenges, even the overall accuracy of <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o is only <strong>60%</strong>, indicating a considerable gap from the human average of <strong>70%</strong>. <br>
-                <strong>3. </strong> In the development of LMMs, there are notable performance differences across modalities, with better results in 
-                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span>
-                 and 
-                 <span style="color:rgb(166, 72, 255); font-weight: bold;">text</span>
-                  modalities but poorer performance in 
-                  <span style="color:rgb(255, 58, 58); font-weight: bold;">audio</span> 
-                  and
-                  <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span> modalities. 
-                Additionally, LMMs exhibit certain deficiencies in capabilities within more specialized subfields. <br>
-                <strong>4. </strong> Chain of Thought prompts have a positive impact on synthetic data detection tasks.
+                <i>Synthetic Data Detection Tasks:</i> <br>
+                1. LMMs exhibit moderate capabilities in synthetic data detection tasks,
+                with certain levels of explainability and generalization. <br>
+                2. LMMs are highly promising tools for synthetic detection, offering additional interpretability compared to expert models and access to feature-level information invisible to the human eye. <br><br>
+                <i>LMMs Capabilities:</i> <br>
+                1. Most LMMs exhibit certain model biases, tending to favor synthetic or real data in their responses. <br>
+                2. Lack of expert domain knowledge, performing poorly on specialized image types like <img style="height: 35px;" src="static/img/icons/satellite.png">satellite and <img style="height: 35px;" src="static/img/icons/medical.png">medical images. <br>
+                3. Unbalanced multimodal capabilities, excelling in <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span> and 
+                <span style="color:rgb(166, 72, 255); font-weight: bold;">text</span> tasks but underperforming in 
+                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span> and
+                <span style="color:rgb(255, 58, 58); font-weight: bold;">audio</span> 
+                 tasks. <br>
+                4. Prompting strategies, including few-shot learning and chain-of-thought, helpenhance LMMs' abilities. <br> <br>
+                These findings highlight the challenging and comprehensive nature of the
+                LOKI task and the promising future of LMMs in synthetic data detection tasks.
             </p>
         </div>
         <!-- dataset -->
@@ -272,6 +275,86 @@
             </ul>
             
         </div>
+
+        <!-- Evaluation -->
+        <div id="evaluation" style="position: relative; margin-top: 20px; margin-bottom: 40px;">
+            <h2 class="text" style="margin-top:0px; margin-bottom:10px"><img src="static/img/icons/evaluation.png" width="50px"> Evaluation</h2>
+            <p class="text">
+                <strong>Model Bias. </strong>The heatmap of the Normalized Bias Index calculated based on recall rates, as shown
+                in <i>Figure.2 (a)</i>, is utilized for analyzing model biases. The results indicate that most models exhibit
+                significant biases in synthetic data detection tasks, with a tendency to incorrectly categorize data as
+                either real or synthetic. For instance, <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o tends to classify textual data as real, whereas it is biased towards judging 
+                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span>
+                data as AI-generated. Despite diverse questioning techniques implemented
+                to minimize cueing effects, a pronounced bias is still evident across most models. <br>
+
+                <strong>Lack of expert domain knowledge. </strong>In <i>Figure.2 (b)</i>, we present the varying performance of GPT-4o across different 
+                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span>
+                subcategories. The experimental results clearly indicate that GPT exhibits
+                strong recognition abilities on common image types such as <img style="height: 35px;" src="static/img/icons/object.png">objects and <img style="height: 35px;" src="static/img/icons/scenery.png">landscapes, even surpassing
+                human users. However, <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o’s performance significantly deteriorates in specialized fields such
+                as <img style="height: 35px;" src="static/img/icons/satellite.png">satellite and <img style="height: 35px;" src="static/img/icons/medical.png">medical imaging, and in less-trained image types like <img style="height: 35px;" src="static/img/icons/document.png">documents. This suggests that
+                current LMMs still lack certain expert domain knowledge. <br>
+
+                <strong>Unbalanced multimodal capabilities. </strong>In <i>Figure.2 (c)</i>, we compare the performance of various
+                LMMs across different modalities. Results indicate that current models excel in frequently trained
+                modalities such as 
+                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span>
+                and 
+                <span style="color:rgb(166, 72, 255); font-weight: bold;">text</span>
+                , even surpassing human performance in some tests. However,
+                their performance declines significantly on 
+                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span>
+                 and 
+                 <span style="color:rgb(255, 58, 58); font-weight: bold;">audio</span>
+                  tasks, with most open-source models lacking corresponding capabilities. For future AGI to develop into a versatile assistant, it needs to
+                possess more balanced multimodal abilities. <br>
+                
+                <div id="main-image">
+                    <img src="static/img/lidar-map.png" alt="" style="z-index: 8000" data-zoomable>
+                    <figcaption style="text-align: center">Figure. 2 The multimodal large model capability assessment analysis results</figcaption>
+                </div>
+            </p>
+            <p class="text">
+                <strong>Model Performance across Different levels. </strong>Based on human user performance, we categorized
+                the difficulty levels of the questions, as shown in <i>Table.2 (b)</i>, which presents the performance of selected
+                models across different difficulty levels. As the difficulty increases, the performance of LMMs
+                gradually declines, consistent with human user performance. Under challenging conditions, <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o’s accuracy drops to only <strong>44.4%</strong>, which is lower than that achieved by random selection. This
+                indicates that LMMs have certain limitations in handling complex synthetic data detection tasks. <br>
+
+                <strong>Prompting Strategies improve LMMs evaluation. </strong>In <i>Table.2 (b)</i>, we demonstrate the effects of different prompting strategies in LOKI’s 
+                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span> and 
+                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span>
+                judgement tasks, where CoT refers to the Chain of Thought prompting and ICL
+                refers to the few-shot prompting. During inference, models
+                are prompted with two randomly selected examples by different strategies. In CoT prompting, we
+                manually craft ”thought chains” with our human annotations to elicit reasoning steps out of LMMs,
+                while in ICL prompting, we simply prepend examples with answers to our questions. Both strategies
+                generally enhance the performance of LMMs, such as <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o and <img style="height: 25px;" src="static/img/icons/Qwen.png">Qwen2-VL, with <strong>10%</strong> performance gains. However, LLaVA-OV-7B experienced significant performance drop when prompted
+                with CoT examples. We conjecture that this degradation may result from a decline in its ability to
+                understand long contexts after fine-tuning.
+                <div id="main-image">
+                    <img src="static/img/Table4&Table5.jpg" alt="" style="z-index: 8000; margin-left: -20%;" data-zoomable>
+                    <figcaption style="text-align: center">Table.2 (a) Result decomposition across questions difficulty levels. <br>
+                        Table.2 (b) LMMs’ performances under different prompting strategies for judgement tasks.
+                    </figcaption>
+                </div>
+            </p>
+            <p class="text">
+                <div id="main-image">
+                    <img src="static/img/Models_testResult.jpg" alt="" style="z-index: 8000" data-zoomable>
+                    <!-- <figcaption style="text-align: center">Testing Results of Different Models on LOKI</figcaption> -->
+                    <br>
+                    <img src="static/img/Models_testResult_Text&Audio.jpg" alt="" style="z-index: 8000" data-zoomable>
+                    <!-- <figcaption style="text-align: center">Evaluation Results for Text and Audio Abilities</figcaption> -->
+                    <!-- <br>
+                    <img src="static/img/lidar-map.png" alt="" style="z-index: 8000" data-zoomable>
+                    <figcaption style="text-align: center"></figcaption> -->
+                </div>
+            </p>
+        </div>
+
+
         <!-- 1. video -->
         <div id="video">
             <h2 class="text"><img class="loki-tag" src="static/img/tags/video.jpg"><br>Video</h2>
@@ -1181,83 +1264,6 @@
             </div>
         </div>
 
-        <!-- Evaluation -->
-        <div id="evaluation" style="position: relative; margin-top: 20px; margin-bottom: 40px;">
-            <h2 class="text" style="margin-top:0px; margin-bottom:10px"><img src="static/img/icons/evaluation.png" width="50px"> Evaluation</h2>
-            <p class="text">
-                <strong>Model Bias. </strong>The heatmap of the Normalized Bias Index calculated based on recall rates, as shown
-                in <i>Figure.2 (a)</i>, is utilized for analyzing model biases. The results indicate that most models exhibit
-                significant biases in synthetic data detection tasks, with a tendency to incorrectly categorize data as
-                either real or synthetic. For instance, <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o tends to classify textual data as real, whereas it is biased towards judging 
-                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span>
-                data as AI-generated. Despite diverse questioning techniques implemented
-                to minimize cueing effects, a pronounced bias is still evident across most models. <br>
-
-                <strong>Lack of expert domain knowledge. </strong>In <i>Figure.2 (b)</i>, we present the varying performance of GPT-4o across different 
-                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span>
-                subcategories. The experimental results clearly indicate that GPT exhibits
-                strong recognition abilities on common image types such as <img style="height: 35px;" src="static/img/icons/object.png">objects and <img style="height: 35px;" src="static/img/icons/scenery.png">landscapes, even surpassing
-                human users. However, <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o’s performance significantly deteriorates in specialized fields such
-                as <img style="height: 35px;" src="static/img/icons/satellite.png">satellite and <img style="height: 35px;" src="static/img/icons/medical.png">medical imaging, and in less-trained image types like <img style="height: 35px;" src="static/img/icons/document.png">documents. This suggests that
-                current LMMs still lack certain expert domain knowledge. <br>
-
-                <strong>Unbalanced multimodal capabilities. </strong>In <i>Figure.2 (c)</i>, we compare the performance of various
-                LMMs across different modalities. Results indicate that current models excel in frequently trained
-                modalities such as 
-                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span>
-                and 
-                <span style="color:rgb(166, 72, 255); font-weight: bold;">text</span>
-                , even surpassing human performance in some tests. However,
-                their performance declines significantly on 
-                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span>
-                 and 
-                 <span style="color:rgb(255, 58, 58); font-weight: bold;">audio</span>
-                  tasks, with most open-source models lacking corresponding capabilities. For future AGI to develop into a versatile assistant, it needs to
-                possess more balanced multimodal abilities. <br>
-                
-                <div id="main-image">
-                    <img src="static/img/lidar-map.png" alt="" style="z-index: 8000" data-zoomable>
-                    <figcaption style="text-align: center">Figure. 2 The multimodal large model capability assessment analysis results</figcaption>
-                </div>
-            </p>
-            <p class="text">
-                <strong>Model Performance across Different levels. </strong>Based on human user performance, we categorized
-                the difficulty levels of the questions, as shown in <i>Table.2 (b)</i>, which presents the performance of selected
-                models across different difficulty levels. As the difficulty increases, the performance of LMMs
-                gradually declines, consistent with human user performance. Under challenging conditions, <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o’s accuracy drops to only <strong>44.4%</strong>, which is lower than that achieved by random selection. This
-                indicates that LMMs have certain limitations in handling complex synthetic data detection tasks. <br>
-
-                <strong>Prompting Strategies improve LMMs evaluation. </strong>In <i>Table.2 (b)</i>, we demonstrate the effects of different prompting strategies in LOKI’s 
-                <span style="color:rgba(83, 164, 251, 1); font-weight: bold;">image</span> and 
-                <span style="color:rgba(41, 208, 108, 1); font-weight: bold;">3D</span>
-                judgement tasks, where CoT refers to the Chain of Thought prompting and ICL
-                refers to the few-shot prompting. During inference, models
-                are prompted with two randomly selected examples by different strategies. In CoT prompting, we
-                manually craft ”thought chains” with our human annotations to elicit reasoning steps out of LMMs,
-                while in ICL prompting, we simply prepend examples with answers to our questions. Both strategies
-                generally enhance the performance of LMMs, such as <img style="height: 25px;" src="static/img/icons/GPT.png">GPT-4o and <img style="height: 25px;" src="static/img/icons/Qwen.png">Qwen2-VL, with <strong>10%</strong> performance gains. However, LLaVA-OV-7B experienced significant performance drop when prompted
-                with CoT examples. We conjecture that this degradation may result from a decline in its ability to
-                understand long contexts after fine-tuning.
-                <div id="main-image">
-                    <img src="static/img/Table4&Table5.jpg" alt="" style="z-index: 8000; margin-left: -20%;" data-zoomable>
-                    <figcaption style="text-align: center">Table.2 (a) Result decomposition across questions difficulty levels. <br>
-                        Table.2 (b) LMMs’ performances under different prompting strategies for judgement tasks.
-                    </figcaption>
-                </div>
-            </p>
-            <p class="text">
-                <div id="main-image">
-                    <img src="static/img/Models_testResult.jpg" alt="" style="z-index: 8000" data-zoomable>
-                    <!-- <figcaption style="text-align: center">Testing Results of Different Models on LOKI</figcaption> -->
-                    <br>
-                    <img src="static/img/Models_testResult_Text&Audio.jpg" alt="" style="z-index: 8000" data-zoomable>
-                    <!-- <figcaption style="text-align: center">Evaluation Results for Text and Audio Abilities</figcaption> -->
-                    <!-- <br>
-                    <img src="static/img/lidar-map.png" alt="" style="z-index: 8000" data-zoomable>
-                    <figcaption style="text-align: center"></figcaption> -->
-                </div>
-            </p>
-        </div>
 
         <!-- GPT judgement/selection -->
         <div id="LLM-test">
